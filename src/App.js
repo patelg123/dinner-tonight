@@ -11,10 +11,9 @@ class App extends Component {
       category: '',
     };
 
-    this.handleToUpdate = this.handleToUpdate.bind(this);
   }
 
-  handleToUpdate(value) {
+  handleToUpdate = (value) => {
     this.setState({category: value});
   }
 
@@ -31,7 +30,7 @@ class App extends Component {
         <p className="App-intro">
           Select Search Criteria Below:
         </p>
-        <FilterBox handleToUpdate= {handleToUpdate.bind(this)} />
+        <FilterBox handleToUpdate= {handleToUpdate} />
         <RecipesTable category={this.state.category}/>
       </div>
     );

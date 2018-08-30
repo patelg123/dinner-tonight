@@ -10,19 +10,11 @@ class CategoriesDropDown extends Component{
       categories: [],
     };
 
-    this.handleChange = this.handleChange.bind(this);
   }
 
-
-
-  handleChange(event){
-
+  handleChange = (event) => {
       var handleToUpdate = this.props.handleToUpdate;
       handleToUpdate(event.target.value);
-  }
-
-  handleSubmit(event){
-
   }
 
   componentDidMount() {
@@ -61,7 +53,7 @@ class CategoriesDropDown extends Component{
           <select onChange={this.handleChange}>
             <option value="">Select Category</option>
             {categories.map(category => (
-              <option value={category.strCategory}>
+              <option key={category.strCategory} value={category.strCategory}>
                 {category.strCategory}
               </option>
             ))
