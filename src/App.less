@@ -1,0 +1,93 @@
+@header-height: 100px;
+@body-font-style: "Georgia";
+
+body {
+ font-family: @body-font-style;
+ font-size: 18px;
+ line-height: 1.5;
+ color: #3b3a3a;
+ font-weight: 300;
+ margin: 0;
+ padding: 0;
+ padding-top: 70px;
+ background-color: #F5F5F5;
+ /*background-image: url("../images/circles-light.png"); */
+}
+
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: @header-height;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.modal-overlay-div {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, .65);
+}
+
+.modal-content-div {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    bottom: 40px;
+    left: 40px;
+    z-index: 10000;
+    overflow: auto;
+    text-align: center;
+    padding: 4px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.modal-dialog-div {
+    position: relative;
+    outline: 0;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    max-width: auto;
+    cursor: default;
+    border-radius: 4px;
+}
+
+
+img {
+    max-width: 50%;
+    height: auto;
+    vertical-align: middle;
+    width: auto\9; /* ie8 */
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

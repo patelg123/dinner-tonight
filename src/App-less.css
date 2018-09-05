@@ -1,15 +1,3 @@
-body {
-  font-family: "Georgia";
-  font-size: 18px;
-  line-height: 1.5;
-  color: #3b3a3a;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-  padding-top: 70px;
-  background-color: #F5F5F5;
-  /*background-image: url("../images/circles-light.png"); */
-}
 .App {
   text-align: center;
 }

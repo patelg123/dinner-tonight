@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import FilterBox from './FilterBox.js';
 import RecipesTable from './RecipesTable.js';
@@ -8,13 +7,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
+      searchType: '',
+      value: '',
+      searchTitle: '',
     };
 
   }
 
-  handleToUpdate = (value) => {
-    this.setState({category: value});
+  handleToUpdate = (searchType, value) => {
+    this.setState({
+      searchType: searchType,
+      value: value,
+      searchTitle: searchType +':' + value,
+    });
   }
 
   render() {
@@ -24,14 +29,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+
           <h1 className="App-title">Welcome to the Dinner Tonight App</h1>
         </header>
         <p className="App-intro">
           Select Search Criteria Below:
         </p>
         <FilterBox handleToUpdate= {handleToUpdate} />
-        <RecipesTable category={this.state.category}/>
+        <RecipesTable searchType={this.state.searchType} value={this.state.value} searchTitle={this.state.searchTitle} />
       </div>
     );
   }

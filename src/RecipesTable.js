@@ -13,22 +13,46 @@ class RecipesTable extends Component {
       chosenMeal: '',
     };
 
-
+    //this.setState({searchTitle: this.props.value +' ' +  this.props.value});
   }
 
-  toggleModal = (chosenMeal) => {
+  openModal = (chosenMeal) => {
       this.setState({
-        showModal: !this.state.showModal,
+        showModal: true,
         chosenMeal: chosenMeal,
       });
   }
 
+  closeModal = () => {
+      this.setState({
+        showModal: false,
+        chosenMeal: '',
+      });
+  }
 
+//this.setState({searchTitle: this.props.value +' ' +  this.props.value});
 
   // Only do the rest call once the drop downs have changed and not on initial app load and only if a category is chosen
   componentDidUpdate(prevProps) {
-    if(this.props.category !== prevProps.category && this.props.category ) {
-      fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + this.props.category)
+
+    let restURL;
+
+    switch (this.props.searchType) {
+      case 'Category':
+      restURL     = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + this.props.value;
+      break;
+
+      case 'Area':
+      restURL = "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + this.props.value;
+      break;
+
+      default:
+      restURL = "";
+      break;
+    }
+
+    if(this.props.value !== prevProps.value && this.props.value ) {
+      fetch(restURL)
         .then(res => res.json())
         .then(
           (result) => {
@@ -39,7 +63,7 @@ class RecipesTable extends Component {
           },
           (error) => {
             this.setState({
-              isLoaded: true,
+              isLoaded: false,
               error
             });
           }
@@ -47,10 +71,12 @@ class RecipesTable extends Component {
     }
   }
 
+
+
   render() {
     const { error, isLoaded, meals} = this.state;
 
-    if (!this.props.category){
+    if (!this.props.value){
       return <div></div>
     }
     else if (error) {
@@ -59,48 +85,29 @@ class RecipesTable extends Component {
     else if (this.state.meals.length === 0) {
       return <div></div>
     }
+    else if (!isLoaded) {
+      return <div>Loading....</div>
+    }
     else {
       return(
         <div>
-          <p className="App-intro">
-            Choose From The Following:
-          </p>
+          <h3>
+            {this.props.searchTitle}
+          </h3>
 
-          <RecipeModal
-            show={this.state.showModal}
-            onClose={this.toggleModal}
-            chosenMeal = {this.state.chosenMeal}
-          />
+          <RecipeModal show={this.state.showModal} onClose={this.closeModal} chosenMeal = {this.state.chosenMeal} />
 
-          <table>
-            <tbody>
-              {meals.map(meal => (
+          {meals.map(meal => (
 
-                <tr key={meal.idMeal}>
-                  <td>
-                    <img src={meal.strMealThumb} alt={meal.strMeal} onClick={() => this.toggleModal(meal.idMeal)}/>
-                    <br />
-                    <b>{meal.strMeal}</b>
-                  </td>
-                  <td>
-                    <button onClick={() => this.toggleModal(meal.idMeal)}>View Recipe</button>
-                  </td>
+            <div key={meal.idMeal}>
+              <img src={meal.strMealThumb} alt={meal.strMeal} onClick={() => this.openModal(meal.idMeal)}/>
+              <br />
+              <h5>{meal.strMeal}</h5>
+            </div>
 
-                </tr>
+          ))
 
-              ))
-
-              }
-            </tbody>
-
-          </table>
-
-
-
-
-
-
-
+          }
         </div>
       );
     }

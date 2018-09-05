@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class CategoriesDropDown extends Component{
+class AreasDropDown extends Component{
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      categories: [],
+      areas: [],
     };
 
   }
 
   handleChange = (event) => {
       var handleToUpdate = this.props.handleToUpdate;
-      handleToUpdate('Category', event.target.value);
+      handleToUpdate('Area', event.target.value);
   }
 
   componentDidMount() {
-    fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+    fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            categories: result.categories
+            areas: result.meals
           });
         },
         (error) => {
@@ -38,7 +38,7 @@ class CategoriesDropDown extends Component{
 
   render(){
 
-    const { error, isLoaded, categories} = this.state;
+    const { error, isLoaded, areas} = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     }
@@ -50,20 +50,23 @@ class CategoriesDropDown extends Component{
     {
       return (
 
+
         <form>
-          <select onChange={this.handleChange} value={this.props.value} >
-            <option value="">Choose Category</option>
-            {categories.map(category => (
-              <option key={category.strCategory} value={category.strCategory}>
-                {category.strCategory}
+
+          <select onChange={this.handleChange} value={this.props.value}>
+            <option value="">Choose Area</option>
+            {areas.map(area => (
+              <option key={area.strArea} value={area.strArea}>
+                {area.strArea}
               </option>
             ))
             }
           </select>
         </form>
+
       );
     }
   }
 }
 
-export default CategoriesDropDown;
+export default AreasDropDown;
