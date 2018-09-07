@@ -37,22 +37,16 @@ class AreasDropDown extends Component{
   }
 
   render(){
-
     const { error, isLoaded, areas} = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     }
-    else if (!isLoaded)
-    {
+    else if (!isLoaded) {
       return <div>Loading...</div>
     }
-    else
-    {
+    else {
       return (
-
-
         <form>
-
           <select onChange={this.handleChange} value={this.props.value}>
             <option value="">Choose Area</option>
             {areas.map(area => (
@@ -63,7 +57,6 @@ class AreasDropDown extends Component{
             }
           </select>
         </form>
-
       );
     }
   }

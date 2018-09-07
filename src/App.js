@@ -30,13 +30,19 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
 
-          <h1 className="App-title">Welcome to the Dinner Tonight App</h1>
+          <h1 className="App-title">.</h1>
         </header>
         <p className="App-intro">
           Select Search Criteria Below:
         </p>
-        <FilterBox handleToUpdate= {handleToUpdate} />
-        <RecipesTable searchType={this.state.searchType} value={this.state.value} searchTitle={this.state.searchTitle} />
+        <div className="main-grid">
+          <div className="main-grid-side"></div>
+          <div className="main-grid-content">
+            <FilterBox handleToUpdate= {handleToUpdate} />
+            <RecipesTable searchType={this.state.searchType} value={this.state.value} searchTitle={this.state.searchTitle} />
+          </div>
+          <div className="main-grid-side"></div>
+        </div>
       </div>
     );
   }

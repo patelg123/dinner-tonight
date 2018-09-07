@@ -17,8 +17,16 @@ class FilterBox extends Component {
 
     return(
       <div>
-        <CategoriesDropDown handleToUpdate = {handleToUpdate.bind(this)} value = {this.state.categoryValue}/>
-        <AreasDropDown handleToUpdate = {handleToUpdate.bind(this)} value = {this.state.areaValue}/>
+        <div className="filterbox-grid">
+
+          <div className="filterbox-content">
+            <CategoriesDropDown handleToUpdate = {handleToUpdate.bind(this)} value = {this.state.categoryValue}/>
+          </div>
+          <div className="filterbox-content">
+            <AreasDropDown handleToUpdate = {handleToUpdate.bind(this)} value = {this.state.areaValue}/>
+          </div>
+
+        </div>
       </div>
     );
   }

@@ -1,5 +1,7 @@
 @header-height: 100px;
 @body-font-style: "Georgia";
+@grid-border: 0px solid;
+
 
 body {
  font-family: @body-font-style;
@@ -14,7 +16,10 @@ body {
  /*background-image: url("../images/circles-light.png"); */
 }
 
-
+ul {
+    margin: 0;
+    align: left;
+}
 
 
 .App {
@@ -41,6 +46,78 @@ body {
   font-size: large;
 }
 
+
+
+.main-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.main-grid-side{
+  grid-column: span 2;
+  border: @grid-border;
+}
+
+.main-grid-content{
+  grid-column: span 8;
+  border: @grid-border;
+}
+
+.filterbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1,50px);
+}
+
+.filterbox-content {
+  grid-column: span 1;
+  border: @grid-border;
+}
+
+
+
+@media screen and (max-width: 800px) {
+
+  .main-grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .main-grid-side{
+    grid-column: span 1;
+    border: @grid-border;
+  }
+
+  .main-grid-content{
+    grid-column: span 1;
+    border: @grid-border;
+  }
+
+
+  .filterbox-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2,50px);
+  }
+
+  .filterbox-content {
+    grid-column: span 1;
+    border: @grid-border;
+  }
+
+  img {
+      max-width: 60%!important;
+      height: auto;
+      vertical-align: middle;
+      width: auto\9; /* ie8 */
+  }
+}
+
+
+
+
+
+
 .modal-overlay-div {
     position: fixed;
     top: 0;
@@ -55,14 +132,15 @@ body {
 
 .modal-content-div {
     position: fixed;
-    top: 40px;
-    right: 40px;
-    bottom: 40px;
-    left: 40px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 10000;
     overflow: auto;
-    text-align: center;
+    text-align: left;
     padding: 4px;
+    height: 95%;
+    width: 80%;
     cursor: pointer;
     background-color: white;
 }
@@ -77,11 +155,23 @@ body {
     max-width: auto;
     cursor: default;
     border-radius: 4px;
+    font-size: 15px;
+
+
+    ul {
+          margin: 0;
+          list-style-type: circle;
+          text-align: left;
+    }
 }
 
 
 img {
     max-width: 50%;
+    min-height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: auto;
     vertical-align: middle;
     width: auto\9; /* ie8 */

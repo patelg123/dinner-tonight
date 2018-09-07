@@ -87,8 +87,11 @@ class RecipeModal extends Component {
               ))
               }
             </div>
+            <div>
+              <button onClick={this.props.onClose}>Close</button>
+            </div>
           </div>
-          <div> <button onClick={this.props.onClose}>Close</button> </div>
+
         </div>
       );
     }

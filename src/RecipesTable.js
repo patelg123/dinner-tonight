@@ -71,8 +71,6 @@ class RecipesTable extends Component {
     }
   }
 
-
-
   render() {
     const { error, isLoaded, meals} = this.state;
 
@@ -105,7 +103,7 @@ class RecipesTable extends Component {
               <h5>{meal.strMeal}</h5>
             </div>
 
-          ))
+              ))
 
           }
         </div>
