@@ -1,4 +1,4 @@
-Dinner Tonight app
+#Dinner Tonight app
 
 This is a ReactJS application that uses CSS grid rather than Bootstrap for a responsive layout.
 
