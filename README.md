@@ -1,11 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
 Dinner Tonight app
 
-The recipe API used is the following:
+This is a ReactJS application that uses CSS grid rather than Bootstrap for a responsive layout.
 
+When complete, this app will have help users quickly choose a meal to cook based upon their search criteria, e.g. time taken, skill level, country of origin, type with regards to vegetarian, vegan, chicken, sea food, lamb, beef etc.
+
+The recipe API used is the following:
 [TheMealDB.com](https://www.themealdb.com/api.php)
 
-The following documentation shows how you can make AJAX call to get data in ReactJS
 
-[AJAX AND API's](https://reactjs.org/docs/faq-ajax.html)
+
+
+
+
+
+
